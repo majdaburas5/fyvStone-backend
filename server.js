@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 var cors = require("cors");
 const marble = require("./server/routes/marble");
 const order = require("./server/routes/orders");
@@ -9,8 +10,7 @@ const path = require("path");
 const port = 3001;
 const mongoose = require("mongoose");
 const marbleDB = "mongodb://127.0.0.1:27017/marbleDB";
-const atlas_database =
-  "mongodb+srv://salemgode:vlCKJ94Xqwra4p9n@cluster0.vv6m4tp.mongodb.net/?retryWrites=true&w=majority";
+const atlas_database = process.env.MONGO_URL;
 mongoose
   .connect(atlas_database ? atlas_database : marbleDB, {
     useNewUrlParser: true,
